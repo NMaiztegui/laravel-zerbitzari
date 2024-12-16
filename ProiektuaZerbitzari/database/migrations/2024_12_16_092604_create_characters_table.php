@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('actor');
             $table->string('name')->unique();
+          
             $table->text('description');
             $table->timestamps();
         });

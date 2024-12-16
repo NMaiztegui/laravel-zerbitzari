@@ -13,5 +13,6 @@ class CharacterSeeder extends Seeder
     public function run(): void
     {
         //
+        \App\Models\Character::factory()->count(5)->create();
     }
 }
