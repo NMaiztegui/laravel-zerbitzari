@@ -12,6 +12,6 @@ class character extends Model
     protected $fillable = [
         'actor',
         'name',
-        'descriptionjgj',
+        'description',
         ];
 }

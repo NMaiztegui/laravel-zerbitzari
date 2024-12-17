@@ -1,10 +1,3 @@
-<div>
-    <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
-</div>
-<form action="/search">
-    <input type="text" name="name" value="default search term" />
-    <input type="submit" value="Search" />
-</form>
 
 
 
@@ -15,19 +8,27 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-success">
                 <div class="panel-heading">List of Game of Thrones Characters</div>
-                <table class="table">
-                    <tr>
-                        <th>Character</th>
-                        <th>Real Name</th>
-                    </tr>
-                    @foreach($characters as $character)
+                @if(Auth::check())
+
+                    <table class="table">
                         <tr>
-                            <td>{{ $character->name }}</td>
-                            <td>{{ $character->actor }}</td>
+                            <th>Character</th>
+                            <th>Real Name</th>
                         </tr>
-                    @endforeach
-                </table>
+                        @foreach($characters as $character)
+                            <tr>
+                                <td>{{ $character->name }}</td>
+                                <td>{{ $character->actor }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <a href="/laravel-zerbitzari/ProiektuaZerbitzari/public/submit" class="btn btn-info"> Sartu berria >></a> 😜😜
+                @endif
             </div>
+            @if(Auth::guest())
+                <a href="/laravel-zerbitzari/ProiektuaZerbitzari/public/login" class="btn btn-info"> You need to login to  see the list >></a> 😜😜
+            @endif
+
         </div>
     </div>
 </div>

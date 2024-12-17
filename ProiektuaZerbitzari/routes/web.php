@@ -14,3 +14,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/submit', 'App\Http\Controllers\SubmitController@show');
+Route::post('/submit', 'App\Http\Controllers\SubmitController@save');
+
