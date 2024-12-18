@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <h1>Submit a Character</h1>
-            <form action="/submit" method="post">
+            <form action="/laravel-zerbitzari/ProiektuaZerbitzari/public/submit" method="post">
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         Please fix the following errors

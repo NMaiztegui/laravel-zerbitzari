@@ -19,6 +19,7 @@ class SubmitController extends Controller
             'description' => 'required|max:255',
         ]);
         $character = tap(new \App\Models\Character($data))->save();
-        return redirect('home');
+        print('hola');
+        return redirect()->route('zerrenda');
     }
 }
