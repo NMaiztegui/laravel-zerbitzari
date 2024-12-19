@@ -19,6 +19,17 @@
                             <tr>
                                 <td>{{ $character->name }}</td>
                                 <td>{{ $character->actor }}</td>
+                                <!--borrar un personaje-->
+                                <td><form action="{{ route('character.delete', $character->id) }}" method="POST" >
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-warning" onclick="return confirm('¿Estás seguro de eliminar este personaje?')">Eliminar</button>
+                                </form></td>
+                                <!--editar un personaje-->
+                                <td><a href="{{ route('character.edit', $character->id) }}"  class="btn btn-info">Editar</a></td>
+                                
+                                
+                                
                             </tr>
                         @endforeach
                     </table>
