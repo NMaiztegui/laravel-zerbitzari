@@ -33,11 +33,11 @@
                             </tr>
                         @endforeach
                     </table>
-                    <a href="/laravel-zerbitzari/ProiektuaZerbitzari/public/submit" class="btn btn-info"> Sartu berria >></a> 😜😜
+                    <a href="/submit" class="btn btn-info"> Sartu berria >></a> 😜😜
                 @endif
             </div>
             @if(Auth::guest())
-                <a href="/laravel-zerbitzari/ProiektuaZerbitzari/public/login" class="btn btn-info"> You need to login to  see the list >></a> 😜😜
+                <a href="/login" class="btn btn-info"> You need to login to  see the list >></a> 😜😜
             @endif
 
         </div>

@@ -5,8 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-
-class CharacterSeeder extends Seeder
+class HouseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +13,6 @@ class CharacterSeeder extends Seeder
     public function run(): void
     {
         //
-        $this->call(HouseSeeder::class);
-        \App\Models\Character::factory()->count(5)->create();
+        \App\Models\House::factory()->count(5)->create();
     }
 }

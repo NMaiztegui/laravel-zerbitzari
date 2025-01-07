@@ -16,12 +16,14 @@ class characterFactory extends Factory
      */
     public function definition(): array
     {
+        $houses = \App\Models\House::pluck('id')->toArray(); // coge un array con los id de las casas
         return [
             //
           
                 'actor' => $this->faker->sentence,
                 'name' => $this->faker->sentence,
                 'description' => $this->faker->text(200),
+                'house_id' => $this->faker->randomElement($houses), // adjunta de menera aleatoria el character a un id de la casa
                 
                
         ];
