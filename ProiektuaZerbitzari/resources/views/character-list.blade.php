@@ -14,11 +14,13 @@
                         <tr>
                             <th>Character</th>
                             <th>Real Name</th>
+                            <th>Houses</th>
                         </tr>
                         @foreach($characters as $character)
                             <tr>
                                 <td>{{ $character->name }}</td>
                                 <td>{{ $character->actor }}</td>
+                                <td>{{ $character->house->name }}</td>
                                 <!--borrar un personaje-->
                                 <td><form action="{{ route('character.delete', $character->id) }}" method="POST" >
                                     @csrf

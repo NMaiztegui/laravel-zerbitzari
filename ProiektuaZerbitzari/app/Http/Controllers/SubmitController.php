@@ -9,7 +9,8 @@ class SubmitController extends Controller
     //
     public function show()
     {
-        return view('submit');
+        $houses = \App\Models\House::all();
+        return view('submit', compact( 'houses'));
     }
     public function save(Request $request)
     {
@@ -17,6 +18,7 @@ class SubmitController extends Controller
             'name' => 'required|max:255',
             'actor' => 'required|max:255',
             'description' => 'required|max:255',
+            'house_id' => 'required|exists:houses,id',
         ]);
         $character = tap(new \App\Models\Character($data))->save();
         print('hola');
