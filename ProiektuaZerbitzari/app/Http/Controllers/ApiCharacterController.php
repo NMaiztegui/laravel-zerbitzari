@@ -13,12 +13,10 @@ class ApiCharacterController extends Controller
     public function index()
     {
         //
-        $character = character::all();
+        
 
-        return response()->json([
-            'status' => true,
-            'charcater' => $character
-        ]);
+        return response()->json(character::all());
+       
     }
 
     /**
@@ -34,14 +32,16 @@ class ApiCharacterController extends Controller
      */
     public function store( $request)
     {
-        //
-        $character = Character::create($request->all());
+        //           
 
-        return response()->json([
-            'status' => true,
-            'message' => "Product Created successfully!",
-            'product' => $character
-        ], 200);
+        $validated = $request->validate([
+            'actor' => 'required|string|max:255',
+            'name' => 'required|string|unique:characters|max:255',
+            'description' => 'required|string',
+        ]);
+    
+        $character = Character::create($validated);
+        return response()->json($character, 201);
     }
 
     /**
@@ -50,6 +50,7 @@ class ApiCharacterController extends Controller
     public function show(Character $character)
     {
         //
+        return response()->json($character);
     }
 
     /**
@@ -66,6 +67,14 @@ class ApiCharacterController extends Controller
     public function update(Request $request, Character $character)
     {
         //
+        $validated = $request->validate([
+            'actor' => 'required|string|max:255',
+            'name' => 'required|string|unique:characters|max:255',
+            'description' => 'required|string',
+        ]);
+    
+        $character = Character::update($validated);
+        return response()->json($character, 201);
     }
 
     /**
@@ -74,5 +83,8 @@ class ApiCharacterController extends Controller
     public function destroy(Character $character)
     {
         //
+
+        $character->delete();
+        return response()->json([null],status: 204);
     }
 }
