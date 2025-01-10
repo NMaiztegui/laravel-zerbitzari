@@ -38,6 +38,7 @@ class CharacterController extends Controller
             $character->name = $request->name;
             $character->actor = $request->actor;
             $character->description = $request->description;
+            $character->house_id = $request->house_id;
             $character->save();
         }
         // redirige a la lista de personajes

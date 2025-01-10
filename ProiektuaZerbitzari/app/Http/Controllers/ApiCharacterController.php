@@ -30,14 +30,15 @@ class ApiCharacterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store( $request)
+    public function store( Request $request)
     {
         //           
 
         $validated = $request->validate([
             'actor' => 'required|string|max:255',
-            'name' => 'required|string|unique:characters|max:255',
+            'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'house_id' => 'required|exists:houses,id',
         ]);
     
         $character = Character::create($validated);
@@ -69,8 +70,9 @@ class ApiCharacterController extends Controller
         //
         $validated = $request->validate([
             'actor' => 'required|string|max:255',
-            'name' => 'required|string|unique:characters|max:255',
+            'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'house_id' => 'required|exists:houses,id',
         ]);
     
         $character = Character::update($validated);
