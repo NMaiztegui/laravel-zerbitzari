@@ -12,6 +12,6 @@ use App\Http\Controllers\ApiCharacterController;
 // Route::apiResource('/character',ApiCharacterController::class);
 Route::get('/character', [ApiCharacterController::class,'index']);
 Route::get('/character/{character}', [ApiCharacterController::class,'show']);
-Route::post('/charater',[ApiCharacterController::class,'store']);
+Route::post('/character',[ApiCharacterController::class,'save']);
 Route::put('/character/{character}',[ApiCharacterController::class,'update']);
-Route::delete('/caharacter/{character}',[ApiCharacterController::class,'destroy']);
+Route::delete('/character/{character}',[ApiCharacterController::class,'destroy']);
