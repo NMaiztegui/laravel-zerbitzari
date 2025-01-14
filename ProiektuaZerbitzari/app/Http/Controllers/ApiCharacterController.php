@@ -49,9 +49,11 @@ class ApiCharacterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Character $character)
+    public function show( $id)
     {
         //
+        // buscar el character que correspomnde con el id
+        $character = \App\Models\Character::findOrFail($id);
         return response()->json($character);
     }
 
@@ -66,20 +68,20 @@ class ApiCharacterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Character $id)
+    public function update(Request $request,  $id)
     {
         //
-          // busca el personaje por su id
-          if ($character= \App\Models\Character::find($id)){
-            // actualiza los datos
-            $character->name = $request->name;
-            $character->actor = $request->actor;
-            $character->description = $request->description;
-            $character->house_id = $request->house_id;
-            $character->save();
-        }
-        //findorfail
-
+        $validated = $request->validate([
+            'actor' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'house_id' => 'required|exists:houses,id',
+        ]);
+        // buscar el character que correspomnde con el id
+        $character = \App\Models\Character::findOrFail($id);
+        // update los datos pasados del $character encontrado
+        $character->update($validated);
+        //devolver un respuesta con los datos actualizados
         
         return response()->json($character, 201);
     }
@@ -87,7 +89,7 @@ class ApiCharacterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Character $id)
+    public function destroy( $id)
     {
         //findorfail
         $character = \App\Models\Character::findOrFail($id);
